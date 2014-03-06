@@ -15,6 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Carbon\Carbon;
+use Exception;
 
 /**
  * Convert Carbon\Carbon instances from request attribute variable.
@@ -37,12 +38,20 @@ class CarbonParamConverter implements ParamConverterInterface
         $options = $configuration->getOptions();
         $value   = $request->attributes->get($param);
 
-        $date = isset($options['format'])
-            ? Carbon::createFromFormat($options['format'], $value)
-            : new Carbon($value);
+        $invalidDateMessage = 'Invalid date given.';
+
+
+        try {
+            $date = isset($options['format'])
+                ? Carbon::createFromFormat($options['format'], $value)
+                : new Carbon($value);
+        } catch(Exception $e) {
+            throw new NotFoundHttpException($invalidDateMessage);
+        }
+
 
         if (!$date) {
-            throw new NotFoundHttpException('Invalid date given.');
+            throw new NotFoundHttpException($invalidDateMessage);
         }
 
         $request->attributes->set($param, $date);

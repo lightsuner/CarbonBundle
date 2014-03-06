@@ -8,7 +8,7 @@
         "nesbot/Carbon": "*"
     },
     "autoload": {
-        "psr-4": { "LightSuner\\CarbonBundle": "src" }
+        "psr-4": { "LightSuner\\CarbonBundle\\": "src/" }
     },
     "minimum-stability": "dev"
 }
