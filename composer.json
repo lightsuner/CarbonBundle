@@ -1,0 +1,14 @@
+{
+    "name": "lightsuner/carbon-bundle",
+    "description": "description_text",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "require": {
+        "sensio/framework-extra-bundle": "2.*",
+        "nesbot/Carbon": "*"
+    },
+    "autoload": {
+        "psr-4": { "LightSuner\\CarbonBundle": "src" }
+    },
+    "minimum-stability": "dev"
+}
