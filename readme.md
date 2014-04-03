@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/lightsuner/CarbonBundle.svg?branch=develop)](https://travis-ci.org/lightsuner/CarbonBundle)
 
 
-[Carbon datetime component](https://github.com/briannesbitt/Carbon)
+[Carbon datetime component](https://github.com/briannesbitt/Carbon) <br>
 [Symfony2 convertors](http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/converters.html)
 
 This bundle provides an opportunity to convert Request data into Carbon objects.
