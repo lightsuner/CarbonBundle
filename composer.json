@@ -1,6 +1,6 @@
 {
     "name": "lightsuner/carbon-bundle",
-    "description": "description_text",
+    "description": "Provide Carbon datetime lib. as annotations param. converter (SensioFrameworkExtraBundle)",
     "type": "symfony-bundle",
     "license": "MIT",
     "require": {
