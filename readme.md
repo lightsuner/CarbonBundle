@@ -10,22 +10,22 @@
 
 This bundle provides an opportunity to convert Request data into Carbon objects.
 ``` php
+...
+use Carbon\Carbon;
+...
+
 /**
  * @Route("/blog/archive/{start}/{end}")
  * @ParamConverter("start", options={"format": "Y-m-d"})
  * @ParamConverter("end", options={"format": "Y-m-d"})
  */
-public function archiveAction(\Carbon $start, \Carbon $end)
+public function archiveAction(Carbon $start, Carbon $end)
 {
 }
 ````
 
 ## Installation
 
-Installation is a quick (I promise!) 7 step process:
-
-1. Download Carbon SF2 Bundle using composer
-2. Enable the Bundle
 
 ### Step 1: Download Carbon SF2 Bundle using composer
 
