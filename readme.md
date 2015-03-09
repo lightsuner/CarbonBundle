@@ -34,7 +34,7 @@ Add Carbon SF2 Bundle in your composer.json:
 ``` json
 {
     "require": {
-        "lightsuner/carbon-bundle": "dev-develop"
+        "lightsuner/carbon-bundle": "1.*"
     }
 }
 ```

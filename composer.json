@@ -9,6 +9,5 @@
     },
     "autoload": {
         "psr-4": { "LightSuner\\CarbonBundle\\": "src/" }
-    },
-    "minimum-stability": "dev"
+    }
 }
