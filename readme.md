@@ -31,10 +31,14 @@ public function archiveAction(Carbon $start, Carbon $end)
 
 Add Carbon SF2 Bundle in your composer.json:
 
+#### For ````sensio/framework-extra-bundle```` ````2.x```` follow [this link](https://github.com/lightsuner/CarbonBundle/tree/1.x).
+
+#### For ````sensio/framework-extra-bundle```` ````3.x````
+
 ``` json
 {
     "require": {
-        "lightsuner/carbon-bundle": "1.*"
+        "lightsuner/carbon-bundle": "2.*"
     }
 }
 ```
