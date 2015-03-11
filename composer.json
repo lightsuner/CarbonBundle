@@ -4,7 +4,7 @@
     "type": "symfony-bundle",
     "license": "MIT",
     "require": {
-        "sensio/framework-extra-bundle": "2.*",
+        "sensio/framework-extra-bundle": "3.*",
         "nesbot/Carbon": "*"
     },
     "autoload": {
