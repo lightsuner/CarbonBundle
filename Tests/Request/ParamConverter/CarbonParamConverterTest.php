@@ -51,13 +51,13 @@ class CarbonParamConverterTest extends \PHPUnit_Framework_TestCase
 
     public function createConfiguration($class = null, $name = null)
     {
-        $config = $this->getMock('Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationInterface', array(
+        $config = $this->getMockBuilder('Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter', array(
             'getClass',
             'getAliasName',
             'getOptions',
             'getName',
             'allowArray'
-        ));
+        ))->disableOriginalConstructor()->getMock();
         if ($name !== null) {
             $config->expects($this->any())->method('getName')->will($this->returnValue($name));
         }
@@ -68,3 +68,4 @@ class CarbonParamConverterTest extends \PHPUnit_Framework_TestCase
         return $config;
     }
 }
+    
