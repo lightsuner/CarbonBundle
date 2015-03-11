@@ -39,25 +39,57 @@ class CarbonParamConverterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('2012-07-21', $request->attributes->get('start')->format('Y-m-d'));
     }
 
+    public function testApplyInvalidDate404Exception()
+    {
+        $request = new Request(array(), array(), array('start' => 'Invalid DateTime Format'));
+        $config = $this->createConfiguration($this->carbonClass, "start");
+
+        $this->setExpectedException(
+            'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
+            'Invalid date given.'
+        );
+        $this->converter->apply($request, $config);
+    }
+
     public function testApplyWithFormatInvalidDate404Exception()
     {
         $request = new Request(array(), array(), array('start' => '2012-07-21'));
         $config = $this->createConfiguration($this->carbonClass, "start");
         $config->expects($this->any())->method('getOptions')->will($this->returnValue(array('format' => 'd.m.Y')));
 
-        $this->setExpectedException('Symfony\Component\HttpKernel\Exception\NotFoundHttpException', 'Invalid date given.');
+        $this->setExpectedException(
+            'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
+            'Invalid date given.'
+        );
         $this->converter->apply($request, $config);
+    }
+
+    public function testApplyOptionalWithEmptyAttribute()
+    {
+        $request = new Request(array(), array(), array('start' => null));
+        $config = $this->createConfiguration($this->carbonClass, 'start');
+        $config->expects($this->once())
+            ->method('isOptional')
+            ->will($this->returnValue(true));
+
+        $this->assertFalse($this->converter->apply($request, $config));
+        $this->assertNull($request->attributes->get('start'));
     }
 
     public function createConfiguration($class = null, $name = null)
     {
-        $config = $this->getMockBuilder('Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter', array(
-            'getClass',
-            'getAliasName',
-            'getOptions',
-            'getName',
-            'allowArray'
-        ))->disableOriginalConstructor()->getMock();
+        $config = $this->getMockBuilder(
+            'Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter',
+            array(
+                'getClass',
+                'getAliasName',
+                'getOptions',
+                'getName',
+                'allowArray',
+                'isOptional',
+            )
+        )->disableOriginalConstructor()->getMock();
+
         if ($name !== null) {
             $config->expects($this->any())->method('getName')->will($this->returnValue($name));
         }

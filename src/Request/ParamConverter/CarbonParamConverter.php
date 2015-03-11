@@ -38,17 +38,19 @@ class CarbonParamConverter implements ParamConverterInterface
         $options = $configuration->getOptions();
         $value   = $request->attributes->get($param);
 
-        $invalidDateMessage = 'Invalid date given.';
+        if (!$value && $configuration->isOptional()) {
+            return false;
+        }
 
+        $invalidDateMessage = 'Invalid date given.';
 
         try {
             $date = isset($options['format'])
                 ? Carbon::createFromFormat($options['format'], $value)
                 : new Carbon($value);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             throw new NotFoundHttpException($invalidDateMessage);
         }
-
 
         if (!$date) {
             throw new NotFoundHttpException($invalidDateMessage);
