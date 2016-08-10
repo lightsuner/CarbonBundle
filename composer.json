@@ -5,6 +5,7 @@
     "license": "MIT",
     "require": {
         "sensio/framework-extra-bundle": "3.*",
+        "symfony/form": "~2.3|~3.0",
         "nesbot/Carbon": "*"
     },
     "autoload": {
