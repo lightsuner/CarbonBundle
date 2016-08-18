@@ -18,4 +18,10 @@ class CarbonToDateTimeTransformerTest extends \PHPUnit_Framework_TestCase
         $transformer = new CarbonToDateTimeTransformer();
         $this->assertInstanceOf('Carbon\Carbon', $transformer->reverseTransform(new \DateTime()));
     }
+
+    public function testReverseTransformWithNull()
+    {
+        $transformer = new CarbonToDateTimeTransformer();
+        $this->assertNull($transformer->reverseTransform(null));
+    }
 }

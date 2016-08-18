@@ -25,6 +25,9 @@ class CarbonToDateTimeTransformer implements DataTransformerInterface
      */
     public function reverseTransform($dateTime)
     {
-        return Carbon::instance($dateTime);
+        if ($dateTime) {
+            return Carbon::instance($dateTime);
+        }
+        return $dateTime;
     }
 }
