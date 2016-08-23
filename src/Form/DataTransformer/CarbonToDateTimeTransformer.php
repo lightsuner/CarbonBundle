@@ -4,6 +4,7 @@ namespace LightSuner\CarbonBundle\Form\DataTransformer;
 
 use Carbon\Carbon;
 use Symfony\Component\Form\DataTransformerInterface;
+use Symfony\Component\Form\Exception\UnexpectedTypeException;
 
 /**
  * Tranform Carbon to DateTime
@@ -25,6 +26,14 @@ class CarbonToDateTimeTransformer implements DataTransformerInterface
      */
     public function reverseTransform($dateTime)
     {
-        return Carbon::instance($dateTime);
+        if ($dateTime === null) {
+            return null;
+        }
+
+        if ($dateTime instanceof \DateTime) {
+            return Carbon::instance($dateTime);
+        }
+
+        throw new UnexpectedTypeException($dateTime, '\\DateTime or null');
     }
 }
