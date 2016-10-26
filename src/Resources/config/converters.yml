@@ -3,6 +3,6 @@ parameters:
 
 services:
     carbon.converter.carbon:
-        class: %carbon.converter.carbon.class%
+        class: "%carbon.converter.carbon.class%"
         tags:
             - { name: request.param_converter, converter: carbon }

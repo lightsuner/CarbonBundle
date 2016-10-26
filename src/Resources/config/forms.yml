@@ -4,10 +4,10 @@ parameters:
 
 services:
     carbon.form_extension.carbon_date:
-        class: %carbon.form_extension.carbon_date.class%
+        class: "%carbon.form_extension.carbon_date.class%"
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateType }
     carbon.form_extension.carbon_datetime:
-        class: %carbon.form_extension.carbon_datetime.class%
+        class: "%carbon.form_extension.carbon_datetime.class%"
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateTimeType }
