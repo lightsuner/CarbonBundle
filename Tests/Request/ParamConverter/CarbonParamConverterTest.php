@@ -4,8 +4,9 @@ namespace LightSuner\CarbonBundle\Tests\Request\ParamConverter;
 
 use Symfony\Component\HttpFoundation\Request;
 use LightSuner\CarbonBundle\Request\ParamConverter\CarbonParamConverter;
+use PHPUnit\Framework\TestCase;
 
-class CarbonParamConverterTest extends \PHPUnit_Framework_TestCase
+class CarbonParamConverterTest extends TestCase
 {
     private $converter;
     private $carbonClass;
@@ -44,7 +45,7 @@ class CarbonParamConverterTest extends \PHPUnit_Framework_TestCase
         $request = new Request(array(), array(), array('start' => 'Invalid DateTime Format'));
         $config = $this->createConfiguration($this->carbonClass, "start");
 
-        $this->setExpectedException(
+        $this->expectException(
             'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
             'Invalid date given.'
         );
@@ -57,7 +58,7 @@ class CarbonParamConverterTest extends \PHPUnit_Framework_TestCase
         $config = $this->createConfiguration($this->carbonClass, "start");
         $config->expects($this->any())->method('getOptions')->will($this->returnValue(array('format' => 'd.m.Y')));
 
-        $this->setExpectedException(
+        $this->expectException(
             'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
             'Invalid date given.'
         );

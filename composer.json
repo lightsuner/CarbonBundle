@@ -10,5 +10,8 @@
     },
     "autoload": {
         "psr-4": { "LightSuner\\CarbonBundle\\": "src/" }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
     }
 }
