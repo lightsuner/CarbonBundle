@@ -1,6 +1,7 @@
 parameters:
     carbon.form_extension.carbon_date.class: LightSuner\CarbonBundle\Form\Extension\CarbonDateExtension
     carbon.form_extension.carbon_datetime.class: LightSuner\CarbonBundle\Form\Extension\CarbonDateTimeExtension
+    carbon.form_extension.carbon_time.class: LightSuner\CarbonBundle\Form\Extension\CarbonTimeExtension
 
 services:
     carbon.form_extension.carbon_date:
@@ -11,3 +12,7 @@ services:
         class: "%carbon.form_extension.carbon_datetime.class%"
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateTimeType }
+    carbon.form_extension.carbon_time:
+        class: "%carbon.form_extension.carbon_time.class%"
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\TimeType }
